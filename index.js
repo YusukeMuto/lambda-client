@@ -6,7 +6,6 @@ const AWS = require('aws-sdk');
 AWS.config.loadFromPath( "./.ymuto_config.json" ); 
 
 let lambda = new AWS.Lambda({apiVersion: '2015-03-31'});
-
 let s3 = require( 'ymuto-s3-client' );
 
 exports.updateLambdaCode = ( dirSrc, dirTar, functionName, bucketName, params = {} ) => { 
@@ -33,7 +32,6 @@ exports.updateLambdaCode = ( dirSrc, dirTar, functionName, bucketName, params = 
 }
 
 
-
 exports.updateCode = ( functionName, s3Bucket, s3Key, params ) =>{
   
   let p = {
@@ -45,7 +43,6 @@ exports.updateCode = ( functionName, s3Bucket, s3Key, params ) =>{
 
   return lambda.updateFunctionCode(p).promise();
 };
-
 
 
 exports.uploadLambda = ( dirSrc, dirTar, functionName, role, bucketName, params = {} ) => {
@@ -70,8 +67,6 @@ exports.uploadLambda = ( dirSrc, dirTar, functionName, role, bucketName, params 
     console.log( JSON.stringify( v ) );
     return Promise.resolve( v );
   });
-
-
 }
 
 
